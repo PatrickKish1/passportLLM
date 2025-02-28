@@ -1,4 +1,4 @@
-const { ChatGroq } = require("@langchain/groq");
+const { ChatGoogleGenerativeAI } = require("@langchain/google-genai");
 const {
   START,
   END,
@@ -20,16 +20,16 @@ const {
 } = require("@langchain/core/messages");
 const { v4: uuidv4 } = require('uuid');
 
-class GroqService {
+class GeminiService {
   constructor() {
-    this.llm = new ChatGroq({
-      model: "mixtral-8x7b-32768",
+    this.llm = new ChatGoogleGenerativeAI({
+      model: "gemini-1.5-pro",
       temperature: 0.7,
-      maxTokens: 2048,
-      apiKey: process.env.GROQ_API_KEY,
+      maxOutputTokens: 2048,
+      apiKey: process.env.GOOGLE_API_KEY,
     });
-
-    // Initialize message trimmer
+  
+    // Rest of the constructor remains the same
     this.trimmer = trimMessages({
       maxTokens: 4000,
       strategy: "last",
@@ -38,7 +38,7 @@ class GroqService {
       allowPartial: false,
       startOn: "human",
     });
-
+  
     // Initialize state and chat history
     this.memorySaver = new MemorySaver();
     this.initializePrompts();
@@ -240,7 +240,7 @@ class GroqService {
 }
 
 // Create singleton instance
-const groqService = new GroqService();
-Object.freeze(groqService);
+const geminiService = new GeminiService();
+Object.freeze(geminiService);
 
-module.exports = groqService;
+module.exports = geminiService;

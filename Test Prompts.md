@@ -1,6 +1,6 @@
 # PassportLLM 🛂 ✈️
 
-A powerful API for visa and passport advisory services, built on the Groq LLM platform.
+A powerful API for visa and passport advisory services, built on the Gemini LLM platform.
 
 ## Overview
 
@@ -28,7 +28,7 @@ npm install
 
 # Set up environment variables
 cp .env.example .env
-# Edit the .env file with your GROQ_API_KEY
+# Edit the .env file with your GEMINI_API_KEY
 
 # Start the server
 npm start
@@ -41,7 +41,7 @@ Create a `.env` file with the following:
 ```env
 PORT=3000
 NODE_ENV=development
-GROQ_API_KEY=your_groq_api_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
 ## API Endpoints
@@ -79,34 +79,7 @@ Send a message to the travel advisory assistant.
 
 ```json
 {
-  "response": {
-    "lc": 1,
-    "type": "constructor",
-    "id": ["langchain_core", "messages", "AIMessage"],
-    "kwargs": {
-      "content": "As a US citizen, you are eligible for Japan's visa-free entry program, which allows you to stay in Japan for up to 90 days for tourism, business, or attending conferences. This information is subject to change and it is always best to verify with the Japanese Embassy or official government websites.\n\nHowever, if you plan to stay for longer than 90 days, work, or engage in activities outside of tourism and business, you will need to apply for a specific visa. Some of the available visa types for Japan include:\n\n1. Work visa: for those who have a job offer from a Japanese company.\n2. Student visa: for those who have been accepted into a Japanese educational institution.\n3. Dependent visa: for those who are married to a Japanese citizen or a long-term resident of Japan.\n4. Cultural activities visa: for those who wish to participate in cultural or artistic events, internships, or research.\n5. Spouse or Child of a Japanese National visa\n\nRegarding visa-on-arrival and e-visa, Japan does not currently offer these options for US citizens. For those who require a visa, the typical processing times range from a few days to a few weeks, depending on the type of visa and the embassy or consulate.\n\nVisa fees vary depending on the type of visa, but generally range from $30 to $200. You can find the most up-to-date fee information on the Japanese embassy or consulate website.\n\nFor a visa application, you will typically need to provide the following documents:\n\n1. A valid passport with at least six months of validity beyond your intended stay in Japan.\n2. A completed visa application form.\n3. One passport-size photograph.\n4. Proof of financial means, such as bank statements or a letter from your employer.\n5. A letter explaining the purpose of your visit.\n6. Any additional documents specific to the type of visa you are applying for.\n\nSpecial considerations for Japan include:\n\n1. Health requirements: no specific vaccinations are required, but travelers should be in good health.\n2. Return ticket: you must have a return or onward ticket.\n3. Proof of funds: you must be able to show proof of sufficient funds for your stay in Japan.\n4. Accommodation: you must have a confirmed hotel reservation or a letter of invitation from your host in Japan.\n\nPlease note that this information is subject to change, and it is always best to verify with the Japanese Embassy or official government websites.",
-      "additional_kwargs": {},
-      "tool_calls": [],
-      "invalid_tool_calls": [],
-      "usage_metadata": {
-        "input_tokens": 152,
-        "output_tokens": 563,
-        "total_tokens": 715
-      },
-      "response_metadata": {
-        "tokenUsage": {
-          "completionTokens": 563,
-          "promptTokens": 152,
-          "totalTokens": 715
-        },
-        "finish_reason": "stop"
-      },
-      "id": "13e0a869-65be-4788-aa4c-ff94d303bc81"
-    }
-  },
-  "threadId": "44f4038d-a427-49ee-a2a2-f206378be3d2",
-  "timestamp": "2025-02-26T23:14:59.465Z",
-  "requestId": "bbfa70ea-c098-4b53-8d5e-76b7a6294413"
+  "message": "What visa do I need to visit Japan as a US citizen?"
 }
 ```
 
@@ -115,12 +88,32 @@ Send a message to the travel advisory assistant.
 ```json
 {
   "response": {
-    "role": "assistant",
-    "content": "As a US citizen, you can visit Japan for up to 90 days without a visa for tourism or business purposes under Japan's visa waiver program. Here's what you need to know:\n\n1. Your passport must be valid for the duration of your stay\n2. You must have a confirmed return/onward ticket\n3. You may need to show proof of sufficient funds for your stay\n\nIf you plan to stay longer than 90 days or engage in activities like work or study, you'll need to apply for the appropriate visa through the Japanese embassy or consulate.\n\nAlways verify this information with the official Japanese Ministry of Foreign Affairs website as requirements can change."
+    "lc": 1,
+    "type": "constructor",
+    "id": ["langchain_core", "messages", "AIMessage"],
+    "kwargs": {
+      "content": "As a US citizen, you're in luck! Japan offers **visa-free entry** for tourists from the United States for stays of up to 90 days. This means you don't need a visa before arriving in Japan for a short-term visit.\n\nHowever, if you plan to stay longer than 90 days or engage in activities other than tourism (e.g., work, study), you will need a specific visa.  Japan offers various visa types, including:\n\n* **Work Visas:**  (e.g.,  Highly Skilled Professional,  Intra-company Transferee,  Engineer/Specialist in Humanities/International Services,  Skilled Labor, etc.)\n* **Student Visas:** For those enrolled in educational institutions in Japan.\n* **General Visas:** Cover activities like cultural activities, short-term business trips, and visiting family.\n* **Specified Visas:** For specific activities like working holiday programs or designated activities.\n* **Dependent Visas:** For family members of those holding other Japanese visas.\n\n\n**Typical Processing Times and Fees:**\n\nWhile you don't need a visa as a tourist, if you require a different visa type, processing times and fees will vary depending on the specific visa and your nationality. Check the Japanese embassy or consulate website for the most accurate information.\n\n**Required Documents (for visa applications, if applicable):**\n\nAgain, you won't need these for short-term tourism, but if you are applying for a visa, typically you'll need:\n\n* Valid Passport: With at least six months validity remaining.\n* Completed Visa Application Form.\n* Photograph: Meeting specific size and format requirements.\n* Documents demonstrating the purpose of your visit (e.g., invitation letter, enrollment certificate, employment contract).\n* Proof of sufficient funds to cover your stay.\n* Flight itinerary and accommodation details.\n* Other documents may be required depending on the specific visa type.\n\n**Special Considerations for Japan:**\n\n* **Health Requirements:** While there are no mandatory vaccinations for general tourist visits, it's always a good idea to consult your doctor about recommended vaccinations and health precautions. Japan has excellent healthcare facilities, but travel insurance is highly recommended.\n* **Return Ticket:** While not always strictly enforced for visa-free entry, having a return or onward ticket is advisable to demonstrate your intention to leave Japan within the allowed period.\n* **Proof of Funds:**  While usually not requested at immigration for short stays, having access to sufficient funds to cover your expenses is important.  It's a good idea to have evidence of funds available, such as bank statements or credit cards.\n* **Customs and Immigration:** Be sure to familiarize yourself with Japanese customs regulations regarding prohibited items.  Cooperate fully with immigration officials upon arrival.\n\n\n**Important Reminder:**  This information is for general guidance only. Visa requirements can change. It is crucial to confirm the latest information and specific requirements with the nearest Japanese embassy or consulate or the official Japanese Ministry of Foreign Affairs website before your trip.  Don't rely solely on third-party information.\n",
+      "tool_calls": [],
+      "additional_kwargs": {
+        "finishReason": "STOP",
+        "avgLogprobs": -0.22275234234295901
+      },
+      "usage_metadata": {
+        "input_tokens": 137,
+        "output_tokens": 642,
+        "total_tokens": 779
+      },
+      "invalid_tool_calls": [],
+      "response_metadata": {
+        "finishReason": "STOP",
+        "avgLogprobs": -0.22275234234295901
+      },
+      "id": "9beda687-76d5-41ff-8d0c-714ee5b92f15"
+    }
   },
-  "threadId": "f7e6d5c4-b3a2-1098-fedc-ba9876543210",
-  "timestamp": "2025-02-26T12:31:15.456Z",
-  "requestId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+  "threadId": "00f026dc-0c24-4997-88ef-818bad29e728",
+  "timestamp": "2025-02-28T09:49:35.979Z",
+  "requestId": "ab3b20a5-cf80-4601-8e0c-8cce1b0095da"
 }
 ```
 

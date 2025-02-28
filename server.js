@@ -3,7 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
-const groqService = require('./services/groq');
+const geminiService = require('./services/gemini');
 const rateLimiter = require('./middleware/rateLimiter');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -95,7 +95,7 @@ class TravelAdvisoryServer {
         });
       }
 
-      const response = await groqService.chatWithAssistant(message, threadId);
+      const response = await geminiService.chatWithAssistant(message, threadId);
       
       res.status(200).json({
         ...response,
@@ -113,7 +113,7 @@ class TravelAdvisoryServer {
   async handleGetHistory(req, res, next) {
     try {
       const { threadId } = req.params;
-      const history = await groqService.getConversationHistory(threadId);
+      const history = await geminiService.getConversationHistory(threadId);
       
       res.status(200).json({
         history,
@@ -131,7 +131,7 @@ class TravelAdvisoryServer {
   async handleClearHistory(req, res, next) {
     try {
       const { threadId } = req.params;
-      await groqService.clearConversationHistory(threadId);
+      await geminiService.clearConversationHistory(threadId);
       
       res.status(200).json({
         message: 'Conversation history cleared',
